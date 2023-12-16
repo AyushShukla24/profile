@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Profile</title>
+    <style>
+      .c1 {
+        background: linear-gradient(-25deg, #d84869, #f46641);
+        box-shadow: 0 0 50px #d84869;
+        animation: circle1 15s infinite;
+      }
+      .c2 {
+        background: linear-gradient(-25deg, #5648d8, #8641f4);
+        box-shadow: 0 0 50px #5648d8;
+        animation: circle2 ease-out 18s infinite;
+      }
+       .s4 {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .s5 {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      
+      .s3 {
+        scale: 0;
+      }
+      .s1 {
+        scale: 1;
+      }
+      .s2 {
+        scale: 1;
+        pointer-events: initial;
+      } 
+
+      @keyframes circle1 {
+        0% {
+          left: 30%;
+          top: 5%;
+        }
+        50% {
+          left: 33%;
+          top: 3%;
+        }
+        100% {
+          left: 30%;
+          top: 5%;
+        }
+      }
+      @keyframes circle2 {
+        0% {
+          right: 30%;
+          bottom: 5%;
+        }
+        50% {
+          right: 32%;
+          bottom: 7%;
+        }
+        100% {
+          right: 30%;
+          bottom: 5%;
+        }
+      }
+
+      .active {
+        scale: 1;
+      }
+      .overlay {
+        position: fixed;
+        background-color: #5f5f5f83;
+        top: 0;
+        opacity: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+        transition: 0.6s ease-in-out;
+      }
+      .overlayactive {
+        opacity: 1;
+        pointer-events: initial;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="bg-black h-[100vh] w-[100vw] flex justify-center items-center relative"
+    >
+      <div
+        class="absolute c1 circle1 top-[5%] left-[30%] z-10 w-[13rem] h-[13rem] rounded-full"
+      ></div>
+      <div
+        class="absolute c2 circle2 bottom-[5%] right-[30%] z-10 w-[19rem] h-[19rem] rounded-full"
+      ></div>
+
+      <div
+        class="flex flex-col bg-[#ffffff1a] backdrop-blur-[15px] pt-14 gap-9 items-center border-[2px] border-[#ffffff30] rounded-[15px] w-[400px] h-[490px] absolute z-30"
+      >
+        <div class="flex justify-end items-end">
+          <img
+            class="rounded-full border-2 border-gray-700 w-[150px] h-[150px]"
+            src="WhatsApp Image 2023-11-02 at 10.16.02 AM.jpeg"
+            alt=""
+          />
+        </div>
+        <div class="text-white text-[2rem] font-bold">Ayush Shukla</div>
+        <div class="text-[#ffffffb9] text-[1.1rem] font-bold">
+          Bajrangdal, President
+        </div>
+        <div class="flex flex-row gap-[10px]">
+          <button
+            class="border-2 border-[#ffffffb9] flex items-end gap-2 rounded-[5px] text-[#ffffffb9] text-sm pt-[7px] pb-[7px] pl-[12px] pr-[12px] transition-all duration-300 hover:bg-white hover:text-black"
+            onclick="display()"
+          >
+            <i class="fa fa-share"></i>
+            Share My Profile
+          </button>
+          <button
+            class="border-2 rounded-[5px] text-[#ffffffb9] text-sm pt-[7px] pb-[7px] pl-[12px] pr-[12px] transition-all duration-300 hover:bg-white hover:text-black"
+            onclick=""
+          >
+            Follow Me
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="container"
+        class="z-50 flex flex-col justify-center bg-[#00000088] rounded-[20px] backdrop-blur-[10px] w-[550px] border-[2px] border-[#ffffff59] gap-6 pt-4 pb-12 pl-8 pr-8 transition-all ease-in-out duration-[0.6s] s3"
+      >
+        <div class="flex justify-between items-center">
+          <div class="text-white text-[2rem] font-bold">Share My Profile</div>
+          <button onclick="closess()">
+            <i class="fa fa-close text-white text-[1.7rem]"></i>
+          </button>
+        </div>
+        <div class="w-full h-[0.8px] mt-[-10px] bg-[#ffffff59]"></div>
+        <div class="text-white text-[1.17rem] font-bold">Share this via</div>
+        <div class="flex gap-10">
+          <a
+            href="#"
+            class="w-[30px] h-[30px] rounded-full p-[30px] flex justify-center items-center border-2 border-[#1771e6] hover:bg-[#1771e6] duration-[0.6s] group"
+            ><i
+              class="fa fa-facebook text-[#1771e6] duration-[0.6s] group-hover:text-white text-[27px]"
+            ></i
+          ></a>
+          <a
+            href="#"
+            class="w-[30px] h-[30px] rounded-full p-[30px] flex justify-center items-center border-2 border-[#1c99e6] hover:bg-[#1771e6] duration-[0.6s] group"
+            ><i
+              class="fa fa-twitter text-[#1c99e6] duration-[0.6s] group-hover:text-white text-[27px]"
+            ></i
+          ></a>
+          <a
+            href="#"
+            class="w-[30px] h-[30px] rounded-full p-[30px] flex justify-center items-center border-2 border-[#cb2770] hover:bg-[#cb2770] duration-[0.6s] group"
+            ><i
+              class="fa fa-instagram text-[#cb2770] duration-[0.6s] group-hover:text-white text-[27px]"
+            ></i
+          ></a>
+          <a
+            href="#"
+            class="w-[30px] h-[30px] rounded-full p-[30px] flex justify-center items-center border-2 border-[#2fe664] hover:bg-[#2fe664] duration-[0.6s] group"
+            ><i
+              class="fa fa-whatsapp text-[#2fe664] duration-[0.6s] group-hover:text-white text-[27px]"
+            ></i
+          ></a>
+          <a
+            href="#"
+            class="w-[30px] h-[30px] rounded-full p-[30px] flex justify-center items-center border-2 border-[#0081c2] hover:bg-[#0081c2] duration-[0.6s] group"
+            ><i
+              class="fa fa-telegram text-[#0081c2] duration-[0.6s] group-hover:text-white text-[27px]"
+            ></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <div id="container1" class="overlay" onclick="closess()"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
